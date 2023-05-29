@@ -1,5 +1,5 @@
 import { NumberFormatStyle } from '@angular/common';
-import { Component, DoCheck } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-todo-list',
@@ -7,7 +7,7 @@ import { Component, DoCheck } from '@angular/core';
     styleUrls: ['./todo-list.component.scss']
 })
 
-export class TodoListComponent implements DoCheck {
+export class TodoListComponent implements OnInit, DoCheck {
 
     public tarefas:Array<any> = []
     public newtodoValue:string = ''
@@ -17,9 +17,16 @@ export class TodoListComponent implements DoCheck {
 
     }
 
+    ngOnInit() {
+        //this.tarefas = JSON.parse(localStorage.getItem("lista-de-tarefas"))
+        const listFromLocalStorage = localStorage.getItem("lista-de-tarefas")
+        if (listFromLocalStorage)
+            this.tarefas = JSON.parse(listFromLocalStorage)
+    }
+
     ngDoCheck() {
-        // loading from localStorage()
         this.tarefas.sort( (a, b) => { return Number(a.completed) - Number(b.completed) })
+        localStorage.setItem("lista-de-tarefas", JSON.stringify(this.tarefas) )
         this.tarefasCompleted = this.tarefas.filter( (t) => t.completed ).length
     }
 
