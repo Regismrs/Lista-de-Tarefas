@@ -18,10 +18,10 @@ export class TodoListComponent implements OnInit, DoCheck {
     }
 
     ngOnInit() {
-        //this.tarefas = JSON.parse(localStorage.getItem("lista-de-tarefas"))
         const listFromLocalStorage = localStorage.getItem("lista-de-tarefas")
-        if (listFromLocalStorage)
+        if (listFromLocalStorage) {
             this.tarefas = JSON.parse(listFromLocalStorage)
+        }
     }
 
     ngDoCheck() {
@@ -41,22 +41,16 @@ export class TodoListComponent implements OnInit, DoCheck {
             this.newtodoValue = ''
             this.tarefas?.unshift({title: value, completed: false})
         }
-        console.info(this.tarefas)
     }
 
     onKeyUpEsc() {
         this.newtodoValue = ''
     }
 
-    onComplete(index:number) {
-        //let tarefa = this.tarefas[index]
-        //this.tarefas[index].completed = !tarefa.completed
-    }
-
     deleteTodo(index:number) {
-        if (window.confirm("Tem certeza que deseja excluir essa tarefa?"))
-            if (this.tarefas[index].completed) this.tarefasCompleted--
+        if (window.confirm("Tem certeza que deseja excluir essa tarefa?")) {
             this.tarefas.splice(index, 1)
+        }
     }
 
     percentListCompleted () {
