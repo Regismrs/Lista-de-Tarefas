@@ -1,5 +1,5 @@
 import { NumberFormatStyle } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
 
 @Component({
     selector: 'app-todo-list',
@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./todo-list.component.scss']
 })
 
-export class TodoListComponent {
+export class TodoListComponent implements DoCheck {
 
     public tarefas:Array<any> = []
     public newtodoValue:string = ''
@@ -17,8 +17,10 @@ export class TodoListComponent {
 
     }
 
-    ngOnInit() {
+    ngDoCheck() {
         // loading from localStorage()
+        this.tarefas.sort( (a, b) => { return Number(a.completed) - Number(b.completed) })
+        this.tarefasCompleted = this.tarefas.filter( (t) => t.completed ).length
     }
 
     onKeyUpEnter() {
@@ -39,20 +41,9 @@ export class TodoListComponent {
         this.newtodoValue = ''
     }
 
-    onComplete(index:number, complete:boolean) {
-        console.info("Complete")
-        let tarefa = this.tarefas[index]
-        if (complete) {
-            this.tarefas?.splice(index, 1)
-            this.tarefasCompleted++
-            setTimeout( () => this.tarefas?.push(tarefa), 100)
-        }
-        else
-        {
-            this.tarefas?.splice(index, 1)
-            this.tarefasCompleted--
-            setTimeout( () => this.tarefas?.unshift(tarefa), 10)
-        }
+    onComplete(index:number) {
+        //let tarefa = this.tarefas[index]
+        //this.tarefas[index].completed = !tarefa.completed
     }
 
     deleteTodo(index:number) {
