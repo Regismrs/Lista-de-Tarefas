@@ -1,11 +1,13 @@
 # Projeto 1 - Lista de Tarefas
 
-Lista de tarefas incrível, leve e funcional.
+Lista de tarefas leve e funcional feita com Angular.
+Confira a versão mais atual em [https://regismrs.github.io/lista-de-tarefas](https://regismrs.github.io/lista-de-tarefas)
 
-## Características ~sinceras~ do projeto
+**Características do projeto**
+
 1. Layout responsivo. Passou no teste do estica e puxa.
-2. Armazena os dados localmente (localStorage). Sua lista fica ~quase~ totalmente segura.
-3. Comporta um lista infinita de tarefas. Confia. ~Não foi testado a esse ponto~ 
+2. Armazena a lista no navegador(localStorage)
+3. Comporta um lista infinita de tarefas. Confia. 
 
 ### Etc
 Esse projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 16.0.0.
