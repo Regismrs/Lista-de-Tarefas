@@ -1,6 +1,6 @@
 # Projeto 1 - Lista de Tarefas
 
-Lista de tarefas leve e funcional feita com Angular.
+Lista de tarefas leve e funcional feita com Angular.  
 Confira a versão mais atual em [https://regismrs.github.io/Lista-de-Tarefas](https://regismrs.github.io/Lista-de-Tarefas)
 
 **Características do projeto**
