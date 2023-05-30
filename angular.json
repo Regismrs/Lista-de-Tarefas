@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Projeto-1-ToDoList": {
+    "Projeto-1-ListaDeTarefas": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/projeto-1-to-do-list",
+            "outputPath": "dist/projeto-1-lista-de-tarefas",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Projeto-1-ToDoList:build:production"
+              "browserTarget": "Projeto-1-ListaDeTarefas:build:production"
             },
             "development": {
-              "browserTarget": "Projeto-1-ToDoList:build:development"
+              "browserTarget": "Projeto-1-ListaDeTarefas:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Projeto-1-ToDoList:build"
+            "browserTarget": "Projeto-1-ListaDeTarefas:build"
           }
         },
         "test": {

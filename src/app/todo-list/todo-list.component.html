@@ -8,10 +8,11 @@
         placeholder="Insira uma nova tarefa com ENTER">
 
     <ul>
-        <app-list-item  *ngFor="let item of tarefas; let i = index"
+        <app-list-item  *ngFor="let item of tarefas; let i = index; trackByid"
             [tarefa]="item"
             [index]="i"
-            (onRemoveEvent)="removeTarefa($event)"></app-list-item>
+            (onRemoveEvent)="removeTarefa($event)">
+        </app-list-item>
     </ul>
 
     <small>

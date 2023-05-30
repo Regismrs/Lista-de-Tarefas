@@ -13,19 +13,14 @@ export class TodoListComponent implements OnInit, DoCheck {
     public newtodoValue:string = ''
     public tarefasCompleted:number = 0
 
-    constructor() {
-
-    }
-
     ngOnInit() {
         const listFromLocalStorage = localStorage.getItem("lista-de-tarefas")
-        if (listFromLocalStorage) {
+        if (listFromLocalStorage)
             this.tarefas = JSON.parse(listFromLocalStorage)
-        }
     }
 
     ngDoCheck() {
-        this.tarefas.sort( (a, b) => { return Number(a.completed) - Number(b.completed) })
+        this.tarefas = this.tarefas.sort( (a, b) => { return Number(a.completed) - Number(b.completed) })
         localStorage.setItem("lista-de-tarefas", JSON.stringify(this.tarefas) )
         this.tarefasCompleted = this.tarefas.filter( (t) => t.completed ).length
     }
@@ -39,7 +34,7 @@ export class TodoListComponent implements OnInit, DoCheck {
         else
         {
             this.newtodoValue = ''
-            this.tarefas?.unshift({title: value, completed: false})
+            this.tarefas?.unshift({uid: this.shuffleId(), title: value, completed: false})
         }
     }
 
@@ -47,14 +42,18 @@ export class TodoListComponent implements OnInit, DoCheck {
         this.newtodoValue = ''
     }
 
-    removeTarefa(index:number) {
-        if (window.confirm("Tem certeza que deseja excluir essa tarefa?")) {
-            this.tarefas.splice(index, 1)
-        }
+    removeTarefa(index:number):void{
+        const resposta =  confirm("Tem certeza que deseja excluir essa tarefa?")
+        console.info(resposta)
+            
     }
 
     percentListCompleted () {
         return (100 * this.tarefasCompleted / this.tarefas.length).toFixed(1)
+    }
+
+    trackByID(index:number, item:any):string {
+        return item.uid
     }
 
     shuffleId (len:number=5):string {

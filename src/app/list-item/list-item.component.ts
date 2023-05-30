@@ -10,9 +10,4 @@ export class ListItemComponent {
   @Input() index:Number|any
   @Output() onRemoveEvent = new EventEmitter<number>()
 
-  public id:string
-
-  constructor() {
-    this.id = String( Date.now() )
-  }
 }

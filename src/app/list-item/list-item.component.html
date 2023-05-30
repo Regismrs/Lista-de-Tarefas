@@ -1,9 +1,9 @@
-<li [ngClass]="{'complete': tarefa.completed }">   
-    <input type="checkbox" id="{{id}}" [(ngModel)]="tarefa.completed">
-    <label for="{{id}}">
+<li [ngClass]="{'complete': tarefa.completed }" id="{{tarefa.uid}}">   
+    <input type="checkbox" id="ipt{{tarefa.uid}}" [(ngModel)]="tarefa.completed">
+    <label for="ipt{{tarefa.uid}}">
         {{tarefa.title}}
     </label>
     <button (click)="onRemoveEvent.emit(index)">
-        <img src="../../assets/trash-icon.png" width="16" height="16">
+        <img src="/assets/trash-icon.png" width="16" height="16">
     </button>
 </li>
