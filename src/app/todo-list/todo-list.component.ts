@@ -9,9 +9,9 @@ import { Component, DoCheck, OnInit } from '@angular/core';
 
 export class TodoListComponent implements OnInit, DoCheck {
 
-    public tarefas:Array<any> = []
-    public newtodoValue:string = ''
-    public tarefasCompleted:number = 0
+    public tarefas: Array<any> = []
+    public newtodoValue: string = ''
+    public tarefasCompleted: number = 0
 
     ngOnInit() {
         const listFromLocalStorage = localStorage.getItem("lista-de-tarefas")
@@ -20,21 +20,19 @@ export class TodoListComponent implements OnInit, DoCheck {
     }
 
     ngDoCheck() {
-        this.tarefas = this.tarefas.sort( (a, b) => { return Number(a.completed) - Number(b.completed) })
-        localStorage.setItem("lista-de-tarefas", JSON.stringify(this.tarefas) )
-        this.tarefasCompleted = this.tarefas.filter( (t) => t.completed ).length
+        this.tarefas = this.tarefas.sort((a, b) => { return Number(a.completed) - Number(b.completed) })
+        localStorage.setItem("lista-de-tarefas", JSON.stringify(this.tarefas))
+        this.tarefasCompleted = this.tarefas.filter((t) => t.completed).length
     }
 
     onKeyUpEnter() {
         let value = this.newtodoValue
-        if (value == '')
-        {
+        if (value == '') {
             alert("Informe a tarefa e confirme com ENTER. Para cancelar use a tecla ESC")
         }
-        else
-        {
+        else {
             this.newtodoValue = ''
-            this.tarefas?.unshift({uid: this.shuffleId(), title: value, completed: false})
+            this.tarefas?.unshift({ uid: this.shuffleId(), title: value, completed: false })
         }
     }
 
@@ -42,21 +40,20 @@ export class TodoListComponent implements OnInit, DoCheck {
         this.newtodoValue = ''
     }
 
-    removeTarefa(index:number):void{
-        const resposta =  confirm("Tem certeza que deseja excluir essa tarefa?")
-        console.info(resposta)
-            
+    removeTarefa(index: number): void {
+        if (confirm("Tem certeza que deseja excluir essa tarefa?"))
+            this.tarefas.splice(index, 1)
     }
 
-    percentListCompleted () {
+    percentListCompleted() {
         return (100 * this.tarefasCompleted / this.tarefas.length).toFixed(1)
     }
 
-    trackByID(index:number, item:any):string {
+    trackByID(index: number, item: any): string {
         return item.uid
     }
 
-    shuffleId (len:number=5):string {
+    shuffleId(len: number = 5): string {
         let chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         const array = chars.split('');
         for (let i = array.length - 1; i > 0; i--) {
