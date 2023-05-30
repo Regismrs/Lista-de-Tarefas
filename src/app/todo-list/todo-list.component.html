@@ -8,13 +8,10 @@
         placeholder="Insira uma nova tarefa com ENTER">
 
     <ul>
-        <li [ngClass]="{'complete': tarefa.completed }" *ngFor="let tarefa of tarefas; let i = index">
-            <label for="t_{{i}}">
-                <input type="checkbox" id="t_{{i}}" [(ngModel)]="tarefa.completed">
-                {{tarefa.title}}
-            </label>
-            <button (click)="deleteTodo(i)">x</button>
-        </li>
+        <app-list-item  *ngFor="let item of tarefas; let i = index"
+            [tarefa]="item"
+            [index]="i"
+            (onRemoveEvent)="removeTarefa($event)"></app-list-item>
     </ul>
 
     <small>

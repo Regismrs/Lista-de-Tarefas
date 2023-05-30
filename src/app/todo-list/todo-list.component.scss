@@ -32,30 +32,7 @@ ul {
     overflow: auto;
     text-align: left;
     background: rgba(255, 255, 255, .2);
-    li {
-        position: relative;
-        padding: .1em 2em .1em .5em;
-        border-bottom: 1px solid rgba(0, 0, 0, .1);
-        &:hover {
-            background: rgba(255, 255, 255, .3);
-        }
-        &:hover button {
-            position: absolute;
-            display: block;
-            top: .5em;
-            right: .5em;
-            background: #a90818;
-            border: none;
-            padding: .5em;
-            color: #fff;
-            border-radius: 100px;
-            width: 25px;
-            height: 25px;
-            line-height: 12px;
-        }
-    }
 }
-button { display:none; }
 label {
     position: relative;
     display: block;
@@ -84,7 +61,6 @@ progress::-moz-progress-bar { background: blue; color: blue;}
 progress::-webkit-progress-value { background: rgb(74, 74, 111); }
 progress { 
     color: blue; 
-    background: green; 
     border: 0px solid darkblue;
 }
 @media (max-height: 600px) {

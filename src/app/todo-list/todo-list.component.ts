@@ -47,7 +47,7 @@ export class TodoListComponent implements OnInit, DoCheck {
         this.newtodoValue = ''
     }
 
-    deleteTodo(index:number) {
+    removeTarefa(index:number) {
         if (window.confirm("Tem certeza que deseja excluir essa tarefa?")) {
             this.tarefas.splice(index, 1)
         }
@@ -55,5 +55,15 @@ export class TodoListComponent implements OnInit, DoCheck {
 
     percentListCompleted () {
         return (100 * this.tarefasCompleted / this.tarefas.length).toFixed(1)
+    }
+
+    shuffleId (len:number=5):string {
+        let chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        const array = chars.split('');
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array.join('').substring(0, len)
     }
 }
